@@ -15,7 +15,7 @@ ____
 - After you create a Qt Project,right click on your project and chose `Add Existing Directory...` add this framework.then you can import these controls by `#include "ThreeDog/td.....h"`.And more specific usage method, you can view the API document.
 
 ## License:
-- MIT
+- MIT   
 ____
 
 # 中文版
