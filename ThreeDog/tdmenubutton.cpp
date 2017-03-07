@@ -84,7 +84,7 @@ void TDMenuButton::leaveEvent(QEvent *e)
 
 void TDMenuButton::enterEvent(QEvent *e)
 {
-    //重写鼠标离开事件，在被选中的状态下不再执行操作
+    //重写鼠标进入事件，在被选中的状态下不再执行操作
     if(is_selected)
         e->ignore();
     else

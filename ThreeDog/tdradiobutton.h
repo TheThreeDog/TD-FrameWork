@@ -21,6 +21,7 @@ public:
     explicit TDRadioButton(const QString pic_che,const QString pic_non,QWidget *parent = 0,bool * boolean = NULL);
     void setColor(const QColor col_che,const QColor col_non);
     void setId(const int i);
+    void setText(const QString & text);
     int getId() const;
     ~TDRadioButton();
 protected:

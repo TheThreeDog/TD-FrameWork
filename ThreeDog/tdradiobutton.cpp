@@ -39,6 +39,11 @@ void TDRadioButton::setId(const int i)
     id = i;
 }
 
+void TDRadioButton::setText(const QString &text)
+{
+    TDCheckbox::setText(text);
+}
+
 int TDRadioButton::getId() const
 {
     return id;
