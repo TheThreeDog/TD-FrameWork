@@ -36,6 +36,8 @@ void TDStackButton::removeButton(QWidget *button)
 //按下标移除按钮
 void TDStackButton::removeButton(const int index)
 {
+    if(index >= stack_layout->count())
+        return ;
     emit buttonRemoved(index);
     stack_layout->removeWidget((QWidget * )stack_layout->itemAt(index));
 }
@@ -68,6 +70,8 @@ TDStackButton::~TDStackButton()
 //设置按下标当前按钮
 void TDStackButton::setCurrentIndex(const int index)
 {
+    if(index >= stack_layout->count())
+        return ;
     if(index != stack_layout->currentIndex()){
         emit buttonChanged(index);
         stack_layout->setCurrentIndex(index);

@@ -23,14 +23,12 @@ class TDScrollBar : public TDWidget
 
 public :
     //初始化接口，背景色，前景色，父控件
-    explicit TDScrollBar(const QColor back_col ,const QColor fron_col,TDWidget *parent = 0,Qt::Orientation ot = Qt::Horizontal);
+    explicit TDScrollBar(const QColor back_col ,const QColor fron_col,TDWidget *parent,Qt::Orientation ot = Qt::Vertical);
     double getPosition() const ;
     double getRadius() const ;
     double getWidth() const ;
     int getOpacityShow() const;
     int getOpacityHide() const;
-    QColor getShowColor();
-    QColor getHideColor();
     ~TDScrollBar();
 protected:
     void mousePressEvent(QMouseEvent *);
@@ -95,7 +93,12 @@ public:
     int wheelStep() const;
     void setWheelStep(const int step);
 
-    int getSliderWidth() const ;
+    int getVerticalSliderWidth() const ;
+    int getHorizontalSliderWidth() const;
+    int getVerticalSliderRadius() const ;
+    int getHorizontalSliderRadius() const;
+    TDScrollBar * getHorizontalScroll();
+    TDScrollBar * getVerticalScroll();
 
     ~TDScrollArea();
 public slots:

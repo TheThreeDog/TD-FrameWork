@@ -17,7 +17,7 @@ class TDWidget : public QWidget
     Q_OBJECT
 public:
     explicit TDWidget(QWidget *parent = 0);
-    //2017、1、9 修改构造函数，增加一个bool变量，是否显示窗体,默认不显示
+    //2017、1、9 修改构造函数，增加一个bool变量，是否显示边框,默认不显示
     TDWidget(QString img_path,QWidget *parent = 0,bool show_window = false);
     void setMoveEnable(const bool can_move);
     bool moveEnable() const;

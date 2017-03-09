@@ -23,7 +23,7 @@ public:
     explicit TDRadioButtonGroup(TDWidget *parent = 0);
     explicit TDRadioButtonGroup(const Qt::Orientation,TDWidget* parent = 0);
     explicit TDRadioButtonGroup(const int num,const Qt::Orientation,TDWidget* parent = 0 );
-    //以图片为参数初始化单选按钮
+    //以图片为参数初始化单选按钮组
     explicit TDRadioButtonGroup(const QString pic_che
                                 ,const QString pic_non
                                 ,TDWidget *parent = 0
@@ -40,6 +40,8 @@ public:
     TDRadioButton* getClickedButton();
     //获取按钮在容器中的位置
     int getClickedButtonLocation() const;
+    //获取选中的按钮的id；
+    int getClickedButtonId() const ;
     //移除所有按钮的文字
     void removeText();
     //初始化函数，传递方向参数，决定是水平还是垂直布局
@@ -48,9 +50,10 @@ public:
     QVector<TDRadioButton *> * radioButtons();
 
     ~TDRadioButtonGroup();
-
+//signals:2017/3/7添加，Threedog
 signals:
-
+    void radioButtonClicked(int id);
+    void radioButtonChanged(int id);
 public slots:
     void buttonClicked(int id );
 private :

@@ -353,7 +353,7 @@ void TDScrollArea::setWidget(QWidget *w)
     sub_widget->move(0,0);
     sub_widget->show();
 
-    scroll_h = new TDScrollBar(QColor(75,75,75),QColor(200,200,200),this);
+    scroll_h = new TDScrollBar(QColor(75,75,75),QColor(200,200,200),this,Qt::Horizontal);
     scroll_h->move(0,this->height()-scroll_h->getWidth());
     scroll_h->connectToWidget(sub_widget);
 
@@ -392,6 +392,36 @@ int TDScrollArea::wheelStep() const
 void TDScrollArea::setWheelStep(const int step)
 {
     wheel_step = step;
+}
+
+int TDScrollArea::getVerticalSliderWidth() const
+{
+    return this->scroll_v->getWidth();
+}
+
+int TDScrollArea::getHorizontalSliderWidth() const
+{
+    return this->scroll_h->getWidth();
+}
+
+int TDScrollArea::getVerticalSliderRadius() const
+{
+    return this->scroll_v->getRadius();
+}
+
+int TDScrollArea::getHorizontalSliderRadius() const
+{
+    return this->scroll_h->getRadius();
+}
+
+TDScrollBar *TDScrollArea::getHorizontalScroll()
+{
+    return this->scroll_h;
+}
+
+TDScrollBar *TDScrollArea::getVerticalScroll()
+{
+    return this->scroll_v;
 }
 
 TDScrollArea::~TDScrollArea()

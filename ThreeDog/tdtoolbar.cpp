@@ -15,7 +15,6 @@ TDToolbar::TDToolbar(QWidget *parent)
     this->setText("");
 }
 
-//最后一个参数毫无意义，只是笨蛋编译器无法区分QString 和 QColor，只能以此来实现构造函数重载
 TDToolbar::TDToolbar(const QString pic_che,const QString pic_non, QWidget *parent)
     :TDCheckbox(pic_che,pic_non,parent,NULL)
 {

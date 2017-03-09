@@ -14,6 +14,7 @@ TDWidget::TDWidget(QWidget *parent) : QWidget(parent)
 {
     //一定初始化为false，否则默认会赋值true，mouseMoveEvent会在点击别的控件时触发！
     this->is_press = false;
+    move_enable = false;
 }
 
 TDWidget::TDWidget(QString img_path,QWidget *parent,bool show_window) : QWidget(parent)

@@ -26,8 +26,6 @@ public:
                       ,TDWidget *parent = 0
                       ,Qt::Orientation ot = Qt::Horizontal);
     //所有属性的外部接口
-
-
     int getMinimum() const;
     int getMaximum() const;
     int getSliderPosition() const ;

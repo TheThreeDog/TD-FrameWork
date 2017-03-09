@@ -126,6 +126,16 @@ int TDRadioButtonGroup::getClickedButtonLocation() const
     }
     return 0;
 }
+
+int TDRadioButtonGroup::getClickedButtonId() const
+{
+    //遍历所有按钮，如果遇到被选中的就直接返回。
+    for(int i = 0;i < radio_buttons.count();i++){
+        if(radio_buttons.at(i)->isChecked())
+            return radio_buttons.at(i)->getId();
+    }
+    return 0;
+}
 //移除所有按钮的文字
 void TDRadioButtonGroup::removeText()
 {
@@ -165,12 +175,15 @@ TDRadioButtonGroup::~TDRadioButtonGroup()
 //组中的单选按钮点击的槽函数
 void TDRadioButtonGroup::buttonClicked(int id)
 {
+    if(id != this->getClickedButtonId())
+        emit radioButtonChanged(id);
     //将被点击的按钮设置为真，其余的都设置成假，则达到了单选的效果。
     for(int i = 0;i < radio_buttons.count();i++){
         radio_buttons.at(i)->setChecked(false);
         if(id == radio_buttons.at(i)->getId())
             radio_buttons.at(i)->setChecked(true);
     }
+    emit radioButtonClicked(id);
     //不是第ID个按钮，是ID等于id的按钮
     //radio_buttons.at(id)->setChecked(true);
 
