@@ -12,7 +12,7 @@ ____
 - I just studied the QML, but I think it's suitable for fit C++ programers.So I developed an simple Framework based on Qt C++,witch can help us create a nice interface conveniently.
 
 ## Usage:
-- After you create a Qt Project,right click on your project and chose `Add Existing Directory...` add this framework.then you can import these controls by `#include "ThreeDog/td.....h"`.And more specific usage method, you can view the [API document](http://www.theedog.top).
+- After you create a Qt Project,right click on your project and chose `Add Existing Directory...` add this framework.then you can import these controls by `#include "ThreeDog/td.....h"`.And more specific usage method, you can view the [API document](http://www.threedog.top).
 
 ## License:
 - MIT   
