@@ -21,6 +21,7 @@ public:
     TDWidget(QString img_path,QWidget *parent = 0,bool show_window = false);
     void setMoveEnable(const bool can_move);
     bool moveEnable() const;
+    void setAutoMask();
 
     ~TDWidget();
 protected:

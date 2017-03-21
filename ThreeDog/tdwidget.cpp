@@ -25,7 +25,7 @@ TDWidget::TDWidget(QString img_path,QWidget *parent,bool show_window) : QWidget(
         this->setAttribute(Qt::WA_TranslucentBackground);
         bg_pic.load(img_path);
         this->resize(bg_pic.size());
-        this->setMask(bg_pic.mask());
+        //this->setMask(bg_pic.mask());
         //一定听初始化为false，否则默认会赋值true，mouseMoveEvent会在点击别的控件时触发！
         this->is_press = false;
         move_enable = true;
@@ -50,6 +50,12 @@ void TDWidget::setMoveEnable(const bool can_move)
 bool TDWidget::moveEnable() const
 {
     return this->move_enable;
+}
+
+void TDWidget::setAutoMask()
+{
+    if(!bg_pic.isNull())
+        this->setMask(bg_pic.mask());
 }
 
 void TDWidget::paintEvent(QPaintEvent *)
