@@ -44,6 +44,10 @@ public slots:
     void setValue(int v);
     void setSliderWidth(const int width);
     void setSliderRadius(const int radius);
+    //设置滑动条的颜色
+    void setBackgroundColor(const QColor &color);
+    void setFrontColor(const QColor &color);
+    void setButtonColor(const QColor &color);
 protected:
     void paintEvent(QPaintEvent *);
     void mousePressEvent(QMouseEvent *);

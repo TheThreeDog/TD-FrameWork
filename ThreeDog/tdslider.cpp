@@ -121,6 +121,21 @@ void TDSlider::setSliderRadius(const int radius)
     update();
 }
 
+void TDSlider::setBackgroundColor(const QColor &color)
+{
+    this->col_background = color;
+}
+
+void TDSlider::setFrontColor(const QColor &color)
+{
+    this->col_front = color;
+}
+
+void TDSlider::setButtonColor(const QColor &color)
+{
+    this->col_button = color;
+}
+
 int TDSlider::getMinimum() const
 {
     return minimum;
