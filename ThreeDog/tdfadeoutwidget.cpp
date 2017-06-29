@@ -105,7 +105,7 @@ void TDFadeoutWidget::showEvent(QShowEvent *)
     is_display = true;
 }
 
-void TDFadeoutWidget::closeEvent(QCloseEvent *e)
+void TDFadeoutWidget::closeEvent(QCloseEvent *)
 {
     //在关闭事件的时候无法实现渐隐效果，因为事件和定时器一起被触发
     //定时器还没执行完，窗体就关闭了

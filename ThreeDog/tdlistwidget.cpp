@@ -10,7 +10,7 @@
  **************************************************************/
 
 #include "tdlistwidget.h"
-
+#include <QDebug>
 TDListWidgetItem::TDListWidgetItem(QWidget *parent, Qt::Orientation ot)
     :TDMenuButton(parent)
 {
@@ -157,6 +157,7 @@ void TDListWidget::addItem(TDListWidgetItem *item)
     if(1 == item->getIndex())//第一个条目，设置为被选中，并且设置当前index为1
         this->current_index = 1;
     item_list.append(item);
+    item->show();//这里的show不加会有BUG
     //连接条目的信号和本窗体的槽，监控点击的条目的效果。
     connect(item,SIGNAL(clicked(int)),this,SLOT(itemClick(int)));
     connect(item,SIGNAL(doubleClicked(int)),this,SLOT(itemDoubleClick(int)));
