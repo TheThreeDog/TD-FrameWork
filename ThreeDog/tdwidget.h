@@ -29,7 +29,9 @@ protected:
     void mouseMoveEvent(QMouseEvent *);
     void mouseReleaseEvent(QMouseEvent *);
     void paintEvent(QPaintEvent *);
-
+    void resizeEvent(QResizeEvent *);
+signals:
+    void sizeChanged();
 private :
     bool is_press;
     bool move_enable;

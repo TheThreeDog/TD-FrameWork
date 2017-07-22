@@ -67,6 +67,11 @@ void TDWidget::paintEvent(QPaintEvent *)
     }
 }
 
+void TDWidget::resizeEvent(QResizeEvent *)
+{
+    emit sizeChanged();
+}
+
 TDWidget::~TDWidget()
 {
 
