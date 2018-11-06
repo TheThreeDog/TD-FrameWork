@@ -332,15 +332,15 @@ TDScrollArea::TDScrollArea(QWidget *parent)
     scroll_h = NULL;
     scroll_v = NULL;
     this->setMoveEnable(false);
-
 }
 
 QWidget *TDScrollArea::widget()
 {
     return sub_widget;
+
 }
 
-void TDScrollArea::setWidget(TDWidget *w)
+void TDScrollArea::setWidget(QWidget *w)
 {
     //如果不为空相当于重设子窗体，需要释放之前的资源
     removeWidget();
@@ -361,8 +361,6 @@ void TDScrollArea::setWidget(TDWidget *w)
     scroll_v->move(this->width()-scroll_v->getWidth(),0);
     scroll_v->connectToWidget(sub_widget);
     this->wheel_step = 30;
-    connect(sub_widget,SIGNAL(sizeChanged()),this,SLOT(updateScrollBar()));
-    connect(sub_widget,SIGNAL(sizeChanged()),this,SLOT(updateScrollBar()));
 }
 
 //移除窗体，清理内存
@@ -499,8 +497,9 @@ void TDScrollArea::setHorizontalSliderOpacity(const int show_opacity, const int 
     scroll_h->setOpacityHide(hide_opacity);
 }
 
-void TDScrollArea::updateScrollBar()
+void TDScrollArea::refreshSlider()
 {
+    //重绘滑槽的长宽属性
     //子窗体不为空的时候才执行对应代码
     if(sub_widget != NULL){
         double w = this->width();
@@ -538,7 +537,8 @@ void TDScrollArea::updateScrollBar()
 
 void TDScrollArea::resizeEvent(QResizeEvent *)
 {
-    this->updateScrollBar();
+    //大小改变就刷新滑槽
+    this->refreshSlider();
 }
 
 //滚轮事件，这段算法把我折腾死了~
@@ -586,4 +586,3 @@ void TDScrollArea::wheelEvent(QWheelEvent *e)
 
     }
 }
-

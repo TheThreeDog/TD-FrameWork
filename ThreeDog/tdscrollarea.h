@@ -7,8 +7,8 @@
  *              滚动条的类也封装在这个文件中
  *
  **************************************************************/
-#ifndef _TDSCROLLAREA_H_ 
-#define _TDSCROLLAREA_H_ 
+#ifndef _TDSCROLLAREA_H_
+#define _TDSCROLLAREA_H_
 #include "tdwidget.h"
 #include <QMouseEvent>
 #include <QPaintEvent>
@@ -87,7 +87,7 @@ public:
 
     explicit TDScrollArea(QWidget *parent = 0);
     QWidget * widget();
-    void setWidget(TDWidget * w);
+    void setWidget(QWidget * w);
     void removeWidget();
     //设置和获取滑轮步长
     int wheelStep() const;
@@ -114,14 +114,13 @@ public slots:
     void setHorizontalSliderRadius(const int radius);
     void setHorizontalSliderColor(const QColor &col_back,const QColor &col_front);
     void setHorizontalSliderOpacity(const int show_opacity,const int hide_opacity);
-    void updateScrollBar();        //更新滑动槽位置
-
+    void refreshSlider(); //刷新滑槽。重绘滑槽的长度等属性
 protected:
     //大小改变的时候，滚动槽的大小也要改变
     void resizeEvent(QResizeEvent *);
     void wheelEvent(QWheelEvent *);
     //子窗体，子类还要需要继承操作此窗体，所以设为保护。
-    TDWidget * sub_widget;
+    QWidget * sub_widget;
 private:
     TDScrollBar * scroll_h;
     TDScrollBar * scroll_v;

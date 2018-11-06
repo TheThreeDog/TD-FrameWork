@@ -40,7 +40,6 @@ TDWidget::TDWidget(QString img_path,QWidget *parent,bool show_window) : QWidget(
         this->is_press = false;
         move_enable = false;
     }
-
 }
 
 void TDWidget::setMoveEnable(const bool can_move)
@@ -65,11 +64,6 @@ void TDWidget::paintEvent(QPaintEvent *)
         QPainter p(this);
         p.drawPixmap(0,0,bg_pic);
     }
-}
-
-void TDWidget::resizeEvent(QResizeEvent *)
-{
-    emit sizeChanged();
 }
 
 TDWidget::~TDWidget()
