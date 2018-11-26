@@ -7,7 +7,9 @@
 *       用默认的背景色和文字，传递参数时，用图片替换三态效果。
 *
 * **************************************************/
-
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
 #ifndef TDPUSHBUTTON_H
 #define TDPUSHBUTTON_H
 #include "tdabstractbutton.h"

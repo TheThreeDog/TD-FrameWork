@@ -7,7 +7,9 @@
 *       函数指针和调用者的指针实现回调函数。也可以用信号和槽。
 *
 * **************************************************/
-
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
 #include "tdabstractbutton.h"
 #include <QDebug>
 TDAbstractButton::TDAbstractButton(QWidget *parent) :QLabel (parent)
@@ -80,4 +82,3 @@ bool TDAbstractButton::moveEnable() const
 {
     return move_enable;
 }
-

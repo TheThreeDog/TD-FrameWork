@@ -8,8 +8,11 @@
  **************************************************************/
 //2017/1/6
 //存在问题，只能在单独窗体状态时实现透明渐变，如果是子窗体，则渐变失效
-#ifndef _TDFADEOUTWIDGET_H_ 
-#define _TDFADEOUTWIDGET_H_ 
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
+#ifndef _TDFADEOUTWIDGET_H_
+#define _TDFADEOUTWIDGET_H_
 #include "tdwidget.h"
 #include <QTimer>
 #include <QCloseEvent>

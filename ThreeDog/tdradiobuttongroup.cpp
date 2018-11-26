@@ -7,6 +7,10 @@
 *           同一个组内，只能有一个按钮被选择。单个的按钮用自定义复选框实现
 *
 * **************************************************/
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
+
 #include "tdradiobuttongroup.h"
 #include <QBitmap>
 #include <QDebug>
@@ -188,4 +192,3 @@ void TDRadioButtonGroup::buttonClicked(int id)
     //radio_buttons.at(id)->setChecked(true);
 
 }
-

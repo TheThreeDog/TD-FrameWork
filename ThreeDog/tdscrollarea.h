@@ -7,6 +7,9 @@
  *              滚动条的类也封装在这个文件中
  *
  **************************************************************/
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
 #ifndef _TDSCROLLAREA_H_
 #define _TDSCROLLAREA_H_
 #include "tdwidget.h"

@@ -18,7 +18,9 @@
  *
  * *************************************************/
 
-
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
 #ifndef TDABSTRACTBUTTON_H
 #define TDABSTRACTBUTTON_H
 #include <QLabel>

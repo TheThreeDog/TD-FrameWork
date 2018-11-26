@@ -6,8 +6,11 @@
  *          于被选中的状态，而不是一松开图片就切换回来。
  *
  **************************************************************/
-#ifndef _TDMENUBUTTON_H_ 
-#define _TDMENUBUTTON_H_ 
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
+#ifndef _TDMENUBUTTON_H_
+#define _TDMENUBUTTON_H_
 #include "tdpushbutton.h"
 #include <QMouseEvent>
 #include <QFocusEvent>

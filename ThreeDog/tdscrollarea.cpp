@@ -6,7 +6,9 @@
  *          大小超过外部窗体，就显示出来滚动条，滚动条大小规格由主窗体占子窗体比例调控
  *
  **************************************************************/
-
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
 #include "tdscrollarea.h"
 #include <QDebug>
 #include <QPalette>

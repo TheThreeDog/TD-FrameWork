@@ -7,7 +7,9 @@
  *         并增加ID属性，用于记录按钮当前的ID。
  *
  **************************************************************/
-
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
 #include "tdradiobutton.h"
 
 TDRadioButton::TDRadioButton(QWidget *parent)

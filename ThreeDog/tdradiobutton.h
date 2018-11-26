@@ -7,8 +7,12 @@
  *         并增加ID属性，用于记录按钮当前的ID。
  *
  **************************************************************/
-#ifndef _TDRADIOBUTTON_H_ 
-#define _TDRADIOBUTTON_H_ 
+
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
+#ifndef _TDRADIOBUTTON_H_
+#define _TDRADIOBUTTON_H_
 #include"tdcheckbox.h"
 
 class TDRadioButton : public TDCheckbox

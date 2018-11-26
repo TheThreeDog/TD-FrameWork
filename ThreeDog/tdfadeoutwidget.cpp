@@ -8,7 +8,9 @@
  **************************************************************/
 //2017/1/6
 //存在问题，只能在单独窗体状态时实现透明渐变，如果是子窗体，则渐变失效
-
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
 #include "tdfadeoutwidget.h"
 
 #include <QDebug>

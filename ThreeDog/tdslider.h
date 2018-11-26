@@ -6,8 +6,11 @@
  *          在鼠标松开时触发操作，接口和QSlider尽量保持一致。
  *
  **************************************************************/
-#ifndef _TDSLIDER_H_ 
-#define _TDSLIDER_H_ 
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
+#ifndef _TDSLIDER_H_
+#define _TDSLIDER_H_
 #include "tdwidget.h"
 #include <QPainter>
 #include <QPaintEvent>

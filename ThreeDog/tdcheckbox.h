@@ -7,7 +7,9 @@
 *           原来的属性判断，改变属性设置。
 *
 * **************************************************/
-
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
 #ifndef TDCHECKBOX_H
 #define TDCHECKBOX_H
 #include "QLabel"
