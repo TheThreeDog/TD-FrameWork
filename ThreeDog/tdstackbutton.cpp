@@ -1,3 +1,6 @@
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
 /**************************************************************
  * File Name   : tdstackbutton.cpp
  * Author      : ThreeDog
@@ -6,9 +9,7 @@
  *          一个按钮触发效果后切换为另一个按钮。例如音乐播放器中播放模式的按钮
  *
  **************************************************************/
-#if _MSC_BUILD
-#pragma execution_character_set("utf-8")
-#endif
+
 #include "tdstackbutton.h"
 #include <QPushButton>
 TDStackButton::TDStackButton(TDWidget *parent)

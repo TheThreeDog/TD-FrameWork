@@ -1,3 +1,6 @@
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
 /**************************************************************
  * File Name   : tdslider.h
  * Author      : ThreeDog
@@ -6,9 +9,7 @@
  *          在鼠标松开时触发操作，接口和QSlider尽量保持一致。
  *
  **************************************************************/
-#if _MSC_BUILD
-#pragma execution_character_set("utf-8")
-#endif
+
 #ifndef _TDSLIDER_H_
 #define _TDSLIDER_H_
 #include "tdwidget.h"

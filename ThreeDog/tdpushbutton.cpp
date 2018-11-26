@@ -1,3 +1,6 @@
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
 /***************************************************
 * Program Assigment : 自定义按钮类
 * File Name: tdpushbutton.cpp
@@ -7,9 +10,7 @@
 *       用默认的背景色和文字，传递参数时，用图片替换三态效果。
 *
 * **************************************************/
-#if _MSC_BUILD
-#pragma execution_character_set("utf-8")
-#endif
+
 #include "tdpushbutton.h"
 #include <QPalette>
 #include <QBitmap>

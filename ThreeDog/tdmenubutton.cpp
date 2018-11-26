@@ -1,3 +1,6 @@
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
 /**************************************************************
  * File Name   : tdmenubutton.cpp
  * Author      : ThreeDog
@@ -6,9 +9,7 @@
  *          于被选中的状态，而不是一松开图片就切换回来。
  *
  **************************************************************/
-#if _MSC_BUILD
-#pragma execution_character_set("utf-8")
-#endif
+
 #include "tdmenubutton.h"
 
 TDMenuButton::TDMenuButton(QWidget *parent)

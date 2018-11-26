@@ -1,3 +1,6 @@
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
 /***************************************************
 * Program Assigment : 自定义抽象按钮类
 * File Name: tdabstructbutton.cpp
@@ -17,10 +20,6 @@
  *      包括其他事件也有可能出现此种情况，应注意。
  *
  * *************************************************/
-
-#if _MSC_BUILD
-#pragma execution_character_set("utf-8")
-#endif
 #ifndef TDABSTRACTBUTTON_H
 #define TDABSTRACTBUTTON_H
 #include <QLabel>

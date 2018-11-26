@@ -1,3 +1,6 @@
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
 /***************************************************
 * Program Assigment : 自定义工具栏按钮类
 * File Name: tdtoolbar.h
@@ -7,9 +10,7 @@
 *           去除了复选框的右控件，可以通过信号和槽或者回调函数实现功能。
 *
 * **************************************************/
-#if _MSC_BUILD
-#pragma execution_character_set("utf-8")
-#endif
+
 #ifndef TDTOOLBAR_H
 #define TDTOOLBAR_H
 #include "tdcheckbox.h"

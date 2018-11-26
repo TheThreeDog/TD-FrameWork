@@ -1,3 +1,6 @@
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
 /**************************************************************
  * File Name   : tdlistwidget.h
  * Author      : ThreeDog
@@ -8,9 +11,7 @@
  *          必须重新实现setText()函数，如果使用图片，就用空方法体代替。
  *
  **************************************************************/
-#if _MSC_BUILD
-#pragma execution_character_set("utf-8")
-#endif
+
 #ifndef _TDLISTWIDGET_H_
 #define _TDLISTWIDGET_H_
 #include <QLabel>

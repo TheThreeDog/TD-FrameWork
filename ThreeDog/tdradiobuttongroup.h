@@ -1,3 +1,6 @@
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
 /***************************************************
 * Program Assigment : 自定义单选按钮组类
 * File Name: tdradiobuttongroup.h
@@ -7,9 +10,6 @@
 *           同一个组内，只能有一个按钮被选择。单个的按钮用自定义复选框实现
 *
 * **************************************************/
-#if _MSC_BUILD
-#pragma execution_character_set("utf-8")
-#endif
 #ifndef TDRADIOBUTTONGROUP_H
 #define TDRADIOBUTTONGROUP_H
 

@@ -1,3 +1,6 @@
+#if _MSC_BUILD
+#pragma execution_character_set("utf-8")
+#endif
 /***************************************************
 * Program Assigment : 自定义窗体类
 * File Name: tdwidget.h
@@ -6,9 +9,7 @@
 * Description: 自定义窗体类，实现用图片代替不规则窗体，可拖动。
 *
 * **************************************************/
-#if _MSC_BUILD
-#pragma execution_character_set("utf-8")
-#endif
+
 #ifndef TDWIDGET_H
 #define TDWIDGET_H
 #include <QWidget>
