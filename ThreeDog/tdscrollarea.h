@@ -1,4 +1,4 @@
-#if _MSC_BUILD
+﻿#if _MSC_BUILD
 #pragma execution_character_set("utf-8")
 #endif
 /**************************************************************
@@ -46,8 +46,10 @@ public slots:
     void setSliderPosition(const double pos);
     void setSliderLength(const double length);
     //设置圆角矩形滑块的圆角半径
-    void setRadius(const double radius);
+    void setRadius(const double radius,const double slider_radius);
     void setWidth(const double wid);
+    //设置滑块与滑槽之间的间隔
+    void setPadding(const int padding);
     //关联窗体
     void connectToWidget(QWidget *w);
     //设置滑块颜色
@@ -72,7 +74,8 @@ private :
     double length;          //滑槽总长度
     double slider_length;   //滑动条长度
     double position;
-    double radius;
+    double slider_radius;   //滑块的半径
+    double radius;          //滑槽的半径
     //滑条的宽度
     double width;
     //滑槽所关联的窗体，滑槽移动，控制哪个窗体移动相应的位置。
@@ -80,6 +83,7 @@ private :
     //滑槽的透明度
     int opacity_show;
     int opacity_hide;
+    int padding;            //滑块和滑槽之间的间隔
     QWidget * connect_widget;
 };
 
@@ -107,15 +111,18 @@ public:
     ~TDScrollArea();
 public slots:
     void setSliderWidth(const int width);
-    void setSliderRadius(const int radius);
+    void setSliderRadius(const double radius,const double slider_radius);
+    void setSliderPadding(const int padding);
     void setSliderColor(const QColor &col_back,const QColor &col_front);
     void setSliderOpacity(const int show_opacity,const int hide_opacity);
     void setVerticalSliderWidth(const int width);
-    void setVerticalSliderRadius(const int radius);
+    void setVerticalSliderRadius(const double radius,const double slider_radius);
+    void setVerticalSliderPadding(const int padding);
     void setVerticalSliderColor(const QColor &col_back,const QColor &col_front);
     void setVerticalSliderOpacity(const int show_opacity,const int hide_opacity);
     void setHorizontalSliderWidth(const int width);
-    void setHorizontalSliderRadius(const int radius);
+    void setHorizontalSliderPadding(const int padding);
+    void setHorizontalSliderRadius(const double radius,const double slider_radius);
     void setHorizontalSliderColor(const QColor &col_back,const QColor &col_front);
     void setHorizontalSliderOpacity(const int show_opacity,const int hide_opacity);
     void refreshSlider(); //刷新滑槽。重绘滑槽的长度等属性

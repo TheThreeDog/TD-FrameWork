@@ -1,4 +1,4 @@
-#if _MSC_BUILD
+﻿#if _MSC_BUILD
 #pragma execution_character_set("utf-8")
 #endif
 /**************************************************************
@@ -24,10 +24,12 @@ TDScrollBar::TDScrollBar(const QColor back_col, const QColor fron_col, TDWidget 
     //以上初始化颜色 、、、、、、、、、、、、、、、、、、、
     this->orientation = ot;
     is_press = false;
+    padding = 0;
     //滑条的宽度
     width = 10;
     //滑块半径
-    radius = width/2;
+    radius = 0;
+    slider_radius = width/2;
     //设置长度
     if(Qt::Horizontal == ot){
         this->resize(parent->width(),width);
@@ -174,10 +176,10 @@ void TDScrollBar::paintEvent(QPaintEvent *)
         painter.setPen(Qt::NoPen);
         painter.setBrush(QBrush(back_on_show));
         painter.drawRoundedRect(back_rect,radius,radius);
-        QRect slider_rect(0,position,this->width,this->slider_length);
+        QRect slider_rect(padding,position,this->width-padding*2,this->slider_length);
         painter.setPen(Qt::NoPen);
         painter.setBrush(front_on_show);
-        painter.drawRoundedRect(slider_rect,radius,radius);
+        painter.drawRoundedRect(slider_rect,slider_radius,slider_radius);
         //注意这里是负的
         connect_widget->move(connect_widget->x(),
                              -connect_widget->height()*position/parentWidget()->height());
@@ -186,11 +188,11 @@ void TDScrollBar::paintEvent(QPaintEvent *)
         QRect back_rect(0,0,parentWidget()->width(),this->width);
         painter.setPen(Qt::NoPen);
         painter.setBrush(QBrush(back_on_show));
-        painter.drawRoundedRect(back_rect,radius,radius);
-        QRect slider_rect(position,0,this->slider_length,this->width);
+        painter.drawRoundedRect(back_rect,0,0);
+        QRect slider_rect(position,padding,this->slider_length,this->width-padding*2);
         painter.setPen(Qt::NoPen);
         painter.setBrush(front_on_show);
-        painter.drawRoundedRect(slider_rect,radius,radius);
+        painter.drawRoundedRect(slider_rect,slider_radius,slider_radius);
         //注意这里是负的
         connect_widget->move(-connect_widget->width()*position/parentWidget()->width(),
                              connect_widget->y());
@@ -202,7 +204,6 @@ void TDScrollBar::paintEvent(QPaintEvent *)
 //设置位置
 void TDScrollBar::setSliderPosition(const double pos)
 {
-
     this->position = pos;
     update();
 }
@@ -210,13 +211,14 @@ void TDScrollBar::setSliderPosition(const double pos)
 //设置滑条长度
 void TDScrollBar::setSliderLength(const double length)
 {
-    this->slider_length  = length;
+    this->slider_length = length;
     update();
 }
 
 //设置半径
-void TDScrollBar::setRadius(const double radius)
+void TDScrollBar::setRadius(const double radius, const double slider_radius)
 {
+    this->slider_radius = slider_radius;
     this->radius = radius;
     update();
 }
@@ -225,8 +227,13 @@ void TDScrollBar::setRadius(const double radius)
 void TDScrollBar::setWidth(const double wid)
 {
     this->width = wid;
-    this->radius = wid/2;
+//    this->radius = wid/2;
     update();
+}
+
+void TDScrollBar::setPadding(const int padding)
+{
+    this->padding = padding;
 }
 
 //关联一个窗体，控制关联的窗体的移动
@@ -437,10 +444,18 @@ void TDScrollArea::setSliderWidth(const int width)
     scroll_h->setWidth((double)width);
 }
 
-void TDScrollArea::setSliderRadius(const int radius)
+void TDScrollArea::setSliderRadius(const double radius, const double slider_radius)
 {
-    scroll_v->setRadius((double)radius);
-    scroll_h->setRadius((double)radius);
+    scroll_v->setRadius(radius,slider_radius);
+    scroll_h->setRadius(radius,slider_radius);
+    scroll_v->update();
+    scroll_h->update();
+}
+
+void TDScrollArea::setSliderPadding(const int padding)
+{
+    scroll_v->setPadding(padding);
+    scroll_h->setPadding(padding);
 }
 
 void TDScrollArea::setSliderColor(const QColor &col_back, const QColor &col_front)
@@ -462,9 +477,14 @@ void TDScrollArea::setVerticalSliderWidth(const int width)
     scroll_v->setWidth((double)width);
 }
 
-void TDScrollArea::setVerticalSliderRadius(const int radius)
+void TDScrollArea::setVerticalSliderRadius(const double radius, const double slider_radius)
 {
-    scroll_v->setRadius((double)radius);
+    scroll_v->setRadius(radius,slider_radius);
+}
+
+void TDScrollArea::setVerticalSliderPadding(const int padding)
+{
+    scroll_v->setPadding(padding);
 }
 
 void TDScrollArea::setVerticalSliderColor(const QColor &col_back, const QColor &col_front)
@@ -483,9 +503,14 @@ void TDScrollArea::setHorizontalSliderWidth(const int width)
     scroll_h->setWidth((double)width);
 }
 
-void TDScrollArea::setHorizontalSliderRadius(const int radius)
+void TDScrollArea::setHorizontalSliderPadding(const int padding)
 {
-    scroll_h->setRadius((double)radius);
+    scroll_h->setPadding(padding);
+}
+
+void TDScrollArea::setHorizontalSliderRadius(const double radius, const double slider_radius)
+{
+    scroll_h->setRadius(radius,slider_radius);
 }
 
 void TDScrollArea::setHorizontalSliderColor(const QColor &col_back, const QColor &col_front)
