@@ -22,6 +22,8 @@
 #include <QVBoxLayout>
 #include <QPainter>
 #include <QtMath>
+#include <QDebug>
+#include <QGraphicsDropShadowEffect>
 #include "ThreeDog/tdpushbutton.h"
 
 class TDModal:public QDialog
@@ -30,13 +32,23 @@ class TDModal:public QDialog
 public:
     explicit TDModal(QString title = "模态窗体",QWidget *parent = 0);
     void initInterface(QString title);                  //初始化界面
+    void initShadow();                                  //初始化阴影效果
     void setTitleVisible(bool b);                       //设置标题是否可见
     void setTitle(const QString & text);                //设置标题
-    void setTitleColor(QColor col);                     //设置标题区域背景颜色
-    void setBackgroundColor(QColor col);                //设置背景色
+    void setTitleColor(QColor col);                     //设置标题区域背景色
+    void setArticleColor(QColor col);                   //设置内容区域背景色
+    void setFooterColor(QColor col);                    //设置底部区域背景色
+    void setButtonText(const QString &leftText,const QString &rightText);
+                                                        //设置按钮文字
+    void setOKBtnText(const QString &text);             //设置确认按钮的文字
+    void setCancleBtnText(const QString& text);         //设置取消按钮的文字
     ~TDModal();
 protected:
-    bool show_title;
+    void paintEvent(QPaintEvent * event);
+    void resizeEvent(QResizeEvent * e);
+
+
+    bool            show_title;
     QWidget *       m_pTitleWidget;         //标题区域
     QLabel *        m_pTitleLabel;          //标题文字
     QWidget *       m_pArticleWidget;       //内容区域
@@ -48,6 +60,8 @@ protected:
     QPushButton *   m_pOKBtn;               //成功按钮
     QPushButton *   m_pCancleBtn;           //取消按钮
     TDPushButton *  m_pCloseBtn;            //关闭按钮
+
+
 private:
 
 };
