@@ -15,23 +15,41 @@
 #ifndef _TDMODAL_H_
 #define _TDMODAL_H_
 #include <QWidget>
+#include <QDialog>
 #include <QLabel>
 #include <QPushButton>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QPainter>
+#include <QtMath>
+#include "ThreeDog/tdpushbutton.h"
 
-class TDModal:public QWidget
+class TDModal:public QDialog
 {
+    Q_OBJECT
 public:
-    explicit TDModal(QWidget *parent = 0);
+    explicit TDModal(QString title = "模态窗体",QWidget *parent = 0);
+    void initInterface(QString title);                  //初始化界面
+    void setTitleVisible(bool b);                       //设置标题是否可见
+    void setTitle(const QString & text);                //设置标题
+    void setTitleColor(QColor col);                     //设置标题区域背景颜色
+    void setBackgroundColor(QColor col);                //设置背景色
     ~TDModal();
-private:
+protected:
     bool show_title;
-    QWidget * m_pTitleWidget;       //标题区域
-    QLabel * m_pTitleLabel;         //标题文字
-    QWidget * m_pArticleWidget;     //内容区域
-    QWidget * m_pFooterWidget;      //
-    QHBoxlayout *
-    QPushButton * m_pOKBtn;         //成功按钮
-    QPushButton * m_pCancleBtn;     //取消按钮
+    QWidget *       m_pTitleWidget;         //标题区域
+    QLabel *        m_pTitleLabel;          //标题文字
+    QWidget *       m_pArticleWidget;       //内容区域
+    QWidget *       m_pFooterWidget;        //底部区域
+    QHBoxLayout *   m_pTopHLayout;          //顶部区域水平布局
+    QHBoxLayout *   m_pArticleHLayout;      //内容区域水平布局
+    QHBoxLayout *   m_pFooterHLayout;       //底部区域水平布局
+    QVBoxLayout *   m_pMainLayout;          //整体垂直布局
+    QPushButton *   m_pOKBtn;               //成功按钮
+    QPushButton *   m_pCancleBtn;           //取消按钮
+    TDPushButton *  m_pCloseBtn;            //关闭按钮
+private:
+
 };
 
 #endif  //TDMODAL
