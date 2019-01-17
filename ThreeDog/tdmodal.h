@@ -46,7 +46,7 @@ public:
 protected:
     void paintEvent(QPaintEvent * event);
     void resizeEvent(QResizeEvent * e);
-
+    bool eventFilter(QObject *obj, QEvent *evt);        //鼠标拖动效果实现
 
     bool            show_title;
     QWidget *       m_pTitleWidget;         //标题区域
@@ -54,7 +54,7 @@ protected:
     QWidget *       m_pArticleWidget;       //内容区域
     QWidget *       m_pFooterWidget;        //底部区域
     QHBoxLayout *   m_pTopHLayout;          //顶部区域水平布局
-    QHBoxLayout *   m_pArticleHLayout;      //内容区域水平布局
+    QVBoxLayout *   m_pArticleVLayout;      //内容区域垂直布局
     QHBoxLayout *   m_pFooterHLayout;       //底部区域水平布局
     QVBoxLayout *   m_pMainLayout;          //整体垂直布局
     QPushButton *   m_pOKBtn;               //成功按钮

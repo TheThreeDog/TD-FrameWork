@@ -21,6 +21,7 @@ TDModal::TDModal(QString title,QWidget *parent)
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     this->setAutoFillBackground(true);
+    this->setProperty("canMove", true);
     //设置此窗体模态
     this->setModal(true);
     //    设置内部控件阴影效果
@@ -35,6 +36,7 @@ TDModal::TDModal(QString title,QWidget *parent)
     //  this->setArticleColor(QColor("#000000"));
     //  this->setFooterColor(QColor("#000000"));
     show_title = true;
+    this->setTitle("通道设置");
 }
 
 void TDModal::initInterface(QString title)
@@ -63,6 +65,7 @@ void TDModal::initInterface(QString title)
     m_pTopHLayout->addWidget(m_pTitleLabel);
     m_pTopHLayout->addStretch(5);
     m_pCloseBtn = new TDPushButton(":/img/index/close_normal.png",":/img/index/close_hover.png",":/img/index/close_normal.png",m_pTitleWidget);
+    m_pCloseBtn->setCallback(this,my_selector(close));
     m_pTopHLayout->addWidget(m_pCloseBtn);
     m_pTopHLayout->setContentsMargins(40,0,40,0);
     m_pTitleWidget->setLayout(m_pTopHLayout);
@@ -78,11 +81,9 @@ void TDModal::initInterface(QString title)
                                     "border-color:#DFDFDF;"
                                     "margin:0px 6px 0px 6px;"
                                     "}");
-    m_pArticleHLayout = new QHBoxLayout;
-    m_pArticleWidget->setLayout(m_pArticleHLayout);
-    m_pArticleHLayout->setContentsMargins(40,20,40,30);
-
-
+    m_pArticleVLayout = new QVBoxLayout;
+    m_pArticleWidget->setLayout(m_pArticleVLayout);
+    m_pArticleVLayout->setContentsMargins(40,20,40,30);
 
     //底部区域
     m_pFooterWidget = new QWidget(this);
@@ -100,10 +101,12 @@ void TDModal::initInterface(QString title)
     m_pFooterHLayout->setContentsMargins(40,20,40,30);
 
     m_pOKBtn = new QPushButton("确定",m_pFooterWidget);
+    connect(m_pOKBtn,SIGNAL(clicked(bool)),this,SLOT(close()));
     m_pCancleBtn = new QPushButton("取消",m_pFooterWidget);
+    connect(m_pOKBtn,SIGNAL(clicked(bool)),this,SLOT(close()));
     m_pFooterHLayout->addStretch();
-    m_pFooterHLayout->addWidget(m_pOKBtn);
     m_pFooterHLayout->addWidget(m_pCancleBtn);
+    m_pFooterHLayout->addWidget(m_pOKBtn);
     m_pFooterHLayout->setSpacing(20);
 
 
@@ -195,6 +198,7 @@ void TDModal::setCancleBtnText(const QString &text)
 
 void TDModal::paintEvent(QPaintEvent *event)
 {
+    Q_UNUSED(event)
     // 绘制边框阴影
     QPainter painter(this);
     QColor color(0, 0, 0, 0);
@@ -213,6 +217,31 @@ void TDModal::resizeEvent(QResizeEvent *e)
 {
     //重设大小事件， 重设窗体的大小时，要加上阴影边框的大小
     this->resize(e->size().width()+18,e->size().height());
+}
+
+bool TDModal::eventFilter(QObject *obj, QEvent *evt)
+{
+    static QPoint mousePoint;
+    static bool mousePressed = false;
+
+    QMouseEvent *event = static_cast<QMouseEvent *>(evt);
+    if (event->type() == QEvent::MouseButtonPress) {
+        if (event->button() == Qt::LeftButton) {
+            mousePressed = true;
+            mousePoint = event->globalPos() - this->pos();
+            return true;
+        }
+    } else if (event->type() == QEvent::MouseButtonRelease) {
+        mousePressed = false;
+        return true;
+    } else if (event->type() == QEvent::MouseMove) {
+        if (mousePressed && (event->buttons() && Qt::LeftButton)) {
+            this->move(event->globalPos() - mousePoint);
+            return true;
+        }
+    }
+
+    return QWidget::eventFilter(obj, evt);
 }
 
 TDModal::~TDModal()
