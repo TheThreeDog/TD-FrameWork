@@ -1,4 +1,4 @@
-#if _MSC_BUILD
+﻿#if _MSC_BUILD
 #pragma execution_character_set("utf-8")
 #endif
 /***************************************************
@@ -17,12 +17,20 @@
 
 class TDToolbar : public TDCheckbox
 {
+    Q_OBJECT
 public:
     explicit TDToolbar(QWidget *parent);
     explicit TDToolbar(const QString pic_che,const QString pic_non,QWidget *parent = 0);
 
     void setColor(const QColor &col_che,const QColor &col_non);
     ~TDToolbar();
+protected:
+    void mousePressEvent(QMouseEvent *e);
+public slots:
+    void setMouseChangeEnable(bool b);      // 设置点击可触发状态改变。
+    void changeState(bool b);               // 改变其状态。
+private:
+    bool mouseChangeEnable;                 //标识状态是否可由鼠标改变
 };
 
 #endif // TDTOOLBAR_H

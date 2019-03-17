@@ -1,4 +1,4 @@
-#if _MSC_BUILD
+﻿#if _MSC_BUILD
 #pragma execution_character_set("utf-8")
 #endif
 /***************************************************
@@ -17,12 +17,14 @@ TDToolbar::TDToolbar(QWidget *parent)
     :TDCheckbox(parent,NULL)
 {
     this->setText("");
+    mouseChangeEnable = true;
 }
 
 TDToolbar::TDToolbar(const QString pic_che,const QString pic_non, QWidget *parent)
     :TDCheckbox(pic_che,pic_non,parent,NULL)
 {
     this->setText("");
+    mouseChangeEnable = true;
 }
 
 void TDToolbar::setColor(const QColor &col_che, const QColor &col_non)
@@ -33,4 +35,23 @@ void TDToolbar::setColor(const QColor &col_che, const QColor &col_non)
 TDToolbar::~TDToolbar()
 {
 
+}
+
+void TDToolbar::mousePressEvent(QMouseEvent *e)
+{
+    //如果按钮可以触发，才进行触发调用
+    if(mouseChangeEnable){
+        TDCheckbox::mousePressEvent(e);
+    }
+
+}
+
+void TDToolbar::setMouseChangeEnable(bool b)
+{
+    this->mouseChangeEnable = b;
+}
+
+void TDToolbar::changeState(bool b)
+{
+    this->setChecked(b);
 }
